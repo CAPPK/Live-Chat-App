@@ -6,32 +6,44 @@
   <body>
 
     <script>
-    /* When the user clicks on the button, 
-    toggle between hiding and showing the dropdown content */
-    function myFunction() 
-    {
-        document.getElementById("myDropdown").classList.toggle("show");
-        document.getElementById("myDropdown").innerHTML = "NEW";
-    }
 
-    // Close the dropdown if the user clicks outside of it
-    window.onclick = function(event) 
-    {
-        if (!event.target.matches('.dropbtn')) 
+        function openForm() 
         {
-            var dropdowns = document.getElementsByClassName("dropdown-content");
-            var i;
-            for (i = 0; i < dropdowns.length; i++) 
+            document.getElementById("myForm").style.display = "block";
+        }
+
+        function closeForm() 
+        {
+            document.getElementById("myForm").style.display = "none";
+        }
+
+
+        /* When the user clicks on the button, 
+        toggle between hiding and showing the dropdown content */
+        function myFunction() 
+        {
+            document.getElementById("myDropdown").classList.toggle("show");
+            document.getElementById("myDropdown").innerHTML = "NEW";
+        }
+
+        // Close the dropdown if the user clicks outside of it
+        window.onclick = function(event) 
+        {
+            if (!event.target.matches('.dropbtn')) 
             {
-                var openDropdown = dropdowns[i];
-                if (openDropdown.classList.contains('show')) 
+                var dropdowns = document.getElementsByClassName("dropdown-content");
+                var i;
+                for (i = 0; i < dropdowns.length; i++) 
                 {
-                    openDropdown.classList.remove('show');
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) 
+                    {
+                        openDropdown.classList.remove('show');
+                    }
                 }
             }
         }
-    }
-    
+        
     </script>
 
     <header>
@@ -59,5 +71,17 @@
     <section>
       Online Text Portal :)
     </section>
+
+    <div class="chat-popup" id="myForm">
+        <form action="/action_page.php" class="form-container">
+            <h1>Live Chat</h1>
+
+            <label for="msg"><b>Message</b></label>
+            <textarea placeholder="Type message.." name="msg" required></textarea>
+
+            <button type="submit" class="btn">Send</button>
+            <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+        </form>
+    </div>
   </body>
 </html>
