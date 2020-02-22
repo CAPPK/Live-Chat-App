@@ -42,8 +42,9 @@ text-decoration-color: skyblue;
 }
 
 section {
-  font-size: 9pt;
+  font-size: 18pt;
   background-color: lightgrey;
+  text-align: center;
 }
 
 aside {
@@ -80,7 +81,7 @@ footer {
 
 /* Dropdown Content (Hidden by Default) */
 .dropdown-content {
-  display: none;
+  display:none;
   position: absolute;
   background-color: #f1f1f1;
   min-width: 160px;
