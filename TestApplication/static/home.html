@@ -6,82 +6,22 @@
   <body>
 
     <script>
-
-        function openForm() 
-        {
-            document.getElementById("myForm").style.display = "block";
-        }
-
-        function closeForm() 
-        {
-            document.getElementById("myForm").style.display = "none";
-        }
-
-
-        /* When the user clicks on the button, 
-        toggle between hiding and showing the dropdown content */
-        function myFunction() 
-        {
-            document.getElementById("myDropdown").classList.toggle("show");
-            document.getElementById("myDropdown").innerHTML = "NEW";
-        }
-
-        // Close the dropdown if the user clicks outside of it
-        window.onclick = function(event) 
-        {
-            if (!event.target.matches('.dropbtn')) 
-            {
-                var dropdowns = document.getElementsByClassName("dropdown-content");
-                var i;
-                for (i = 0; i < dropdowns.length; i++) 
-                {
-                    var openDropdown = dropdowns[i];
-                    if (openDropdown.classList.contains('show')) 
-                    {
-                        openDropdown.classList.remove('show');
-                    }
-                }
-            }
-        }
         
     </script>
 
     <header>
-      <h1>Social Media</h1>
+      <h1>New Age Media</h1>
     </header>
+
+    <br><br>
+    <section> Welcome to New Age Media! </section><br>
+    <section> We are currently under site construction... the only fuctioning part is Live-Chat</section> <br>
+    <section> Finish date tbd... Enjoy Live-Chat! </section><br>
+    <br><br><br><br>
     
-    <!-- <div class="Dropdown">
-        <button onclick="myFunction()" class="dropbtn">Menu</button>
-            <div id="myDropdown" class="dropdown-content">
-                <a>Login</a>
-                <a>Profile</a>
-                <a>Settings</a>
-            </div>
-    </div> -->
+    <button type="Login" class="loginbtn">Login</button>
+    <a href="livechat.html"><button type="Login" class="livechatbtn">Live-Chat</button></a>
+    <button type="Create_User " class="createbtn">Create User</button>
 
-    <!-- <nav>
-      <a href="links.html">Tab 1</a>
-      <a href="images.html">Tab 2</a>
-      <a href="lists.html">Tab 3</a>
-      <a href="sections.html">Tab 4</a>
-      <a href="tables.html">Tab 5</a>
-      <a href="forms.html">Tab 6</a>
-    </nav> -->
-
-    <section>
-      Online Text Portal :)
-    </section>
-
-    <div class="chat-popup" id="myForm">
-        <form action="/action_page.php" class="form-container">
-            <h1>Live Chat</h1>
-
-            <label for="msg"><b>Message</b></label>
-            <textarea placeholder="Type message.." name="msg" required></textarea>
-
-            <button type="submit" class="btn">Send</button>
-            <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
-        </form>
-    </div>
   </body>
 </html>

@@ -27,6 +27,7 @@ nav ul li a:hover {
 body {
   font-family: "Courier New", Courier, monospace;
   background-color: lightgrey;
+  text-align: center;
 }
 
 title {
@@ -57,23 +58,41 @@ footer {
   font-size: 8pt;
 }
 
-/*-------------------------------------------------------------------------------------------------------------------*/
-
-/*{box-sizing: border-box;}
-
-/* Button used to open the chat form - fixed at the bottom of the page */
-.open-button {
-  background-color: #555;
-  color: white;
+.livechatbtn {
+  background-color: rgb(255, 255, 255);
+  color: black;
   padding: 16px 20px;
   border: none;
   cursor: pointer;
+  width: 50%;
+  margin-bottom:10px;
   opacity: 0.8;
-  position: fixed;
-  bottom: 23px;
-  right: 28px;
-  width: 280px;
 }
+
+.loginbtn {
+background-color: rgb(255, 255, 255);
+  color: black;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 50%;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+
+.createbtn {
+background-color: rgb(255, 255, 255);
+  color: black;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 50%;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+/*-------------------------------------------------------------------------------------------------------------------*/
+
+*{box-sizing: border-box;}
 
 /* The popup chat - hidden by default */
 .form-popup {
@@ -87,20 +106,33 @@ footer {
 
 /* Add styles to the form container */
 .form-container {
-  max-width: 300px;
+  width: 1200px;
+  max-width: 1200px;
   padding: 10px;
   background-color: white;
+  display: inline-block;
 }
 
 /* Full-width textarea */
-.form-container textarea {
+.form-container .livefeed {
   width: 100%;
   padding: 15px;
   margin: 5px 0 22px 0;
   border: none;
   background: #f1f1f1;
   resize: none;
-  min-height: 200px;
+  min-height: 400px;
+}
+
+/* Full-width textarea */
+.form-container .msg {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+  resize: none;
+  min-height: 50px;
 }
 
 /* When the textarea gets focus, do something */
@@ -121,59 +153,7 @@ footer {
   opacity: 0.8;
 }
 
-/* Add a red background color to the cancel button */
-.form-container .cancel {
-  background-color: red;
-}
-
 /* Add some hover effects to buttons */
 .form-container .btn:hover, .open-button:hover {
   opacity: 1;
 }
-
-
-/*-------------------------------------------------------------------------------------------------------------------*/
-/* Dropdown Button */
-.dropbtn {
-  background-color: #3498DB;
-  color: white;
-  padding: 16px;
-  font-size: 16px;
-  border: none;
-  cursor: pointer;
-}
-
-/* Dropdown button on hover & focus */
-.dropbtn:hover, .dropbtn:focus {
-  background-color: #2980B9;
-}
-
-/* The container <div> - needed to position the dropdown content */
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-/* Dropdown Content (Hidden by Default) */
-.dropdown-content {
-  display:none;
-  position: absolute;
-  background-color: #f1f1f1;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-}
-
-/* Links inside the dropdown */
-.dropdown-content a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-}
-
-/* Change color of dropdown links on hover */
-.dropdown-content a:hover {background-color: #ddd}
-
-/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
-.show {display:block;}
