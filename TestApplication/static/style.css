@@ -90,6 +90,19 @@ background-color: rgb(255, 255, 255);
   margin-bottom:10px;
   opacity: 0.8;
 }
+
+/* Set a style for the submit/login button */
+.backbtn {
+  background-color: whitesmoke;
+  color: black;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 1200px;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+
 /*-------------------------------------------------------------------------------------------------------------------*/
 
 *{box-sizing: border-box;}

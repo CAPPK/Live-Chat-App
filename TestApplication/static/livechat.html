@@ -18,15 +18,19 @@
     </section>
 
     <div class="chat-popup" id="myForm">
-        <form action="/action_page.php" class="form-container">
+        <form action="/livechat" method="POST" class="form-container">
             <h1>Live Chat</h1>
             <textarea placeholder="The live-feed will display here" class="livefeed" readonly></textarea>
             
             <h4>Type Message Below:</h4>
-            <textarea placeholder="Type message..." class="msg" required></textarea>
+            <!-- <textarea placeholder="Type message..." class="msg" name= "MSG" required></textarea> -->
+            <input type="text" placeholder="Type message..." class="msg" name="Msg" required />
 
             <button type="submit" class="btn">Send</button>
         </form>
     </div>
+
+    <a href="home.html"><button type="submit" class="backbtn">Return to Home Page</button></a>
+
   </body>
 </html>
