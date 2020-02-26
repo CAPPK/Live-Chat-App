@@ -26,26 +26,40 @@ nav ul li a:hover {
 
 body {
   font-family: "Courier New", Courier, monospace;
-  background-color: lightgrey;
+  background-image: url("AbstractBackground.jpg");
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
   text-align: center;
 }
 
 title {
 text-align: center;
 font-family: "Courier New", Courier, monospace;
-text-decoration-color: skyblue;
+text-decoration-color: white;
+color: white;
 }
 
 h1 {
 text-align: center;
 font-family: "Courier New", Courier, monospace;
-text-decoration-color: skyblue;
+text-decoration-color: white;
+color: white;
+}
+
+h2 {
+text-align: center;
+font-family: "Courier New", Courier, monospace;
+text-decoration-color: black;
+color: black;
 }
 
 section {
   font-size: 18pt;
-  background-color: lightgrey;
+  background-color: none;
   text-align: center;
+  text-decoration-color: white;
+  color: white;
 }
 
 aside {
@@ -98,7 +112,7 @@ background-color: rgb(255, 255, 255);
   padding: 16px 20px;
   border: none;
   cursor: pointer;
-  width: 1200px;
+  width: 75%;
   margin-bottom:10px;
   opacity: 0.8;
 }
@@ -117,13 +131,14 @@ background-color: rgb(255, 255, 255);
   z-index: 9;
 }
 
-/* Add styles to the form container */
+/* Add styles to the form container 1200px */
 .form-container {
-  width: 1200px;
-  max-width: 1200px;
+  width: 75%;
+  max-width: 75%;
   padding: 10px;
   background-color: white;
   display: inline-block;
+  opacity: 0.85;
 }
 
 /* Full-width textarea */
