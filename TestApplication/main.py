@@ -39,11 +39,15 @@ def livechat():
 
         query=datastore_client.query(kind='Messages')
         query.order=['-time']
-        msgs=query.fetch(6)
-       #print(query.fetch(1))
+        msgs=query.fetch(10)
+        #print(query.fetch(1))
         #print(datastore_client.get(task_key))
         return render_template('livechat/livechat.html', msgs=msgs)
-    return render_template('livechat/livechat.html')
+    query=datastore_client.query(kind='Messages')
+    query.order=['-time']
+    msgs=query.fetch(10)
+    return render_template('livechat/livechat.html', msgs=msgs)
+    #return render_template('livechat/livechat.html')
 
 
 if __name__ == '__main__':

@@ -192,6 +192,10 @@ div.editable {
     padding: 5px;
 }
 
+.form-container .livefeed {
+    text-align: left;
+}
+
 strong {
   font-weight: bold;
 }
