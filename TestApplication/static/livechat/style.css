@@ -185,3 +185,13 @@ background-color: rgb(255, 255, 255);
 .form-container .btn:hover, .open-button:hover {
   opacity: 1;
 }
+div.editable {
+    width: 300px;
+    height: 200px;
+    border: 1px solid #ccc;
+    padding: 5px;
+}
+
+strong {
+  font-weight: bold;
+}
