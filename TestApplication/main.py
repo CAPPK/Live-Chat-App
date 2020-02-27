@@ -1,7 +1,8 @@
-from flask import Flask, redirect, request
+from flask import Flask, redirect, request, render_template
 from google.cloud import datastore
 datastore_client = datastore.Client()
-import random
+#import random
+from datetime import datetime
 
 
 app = Flask(__name__)
@@ -9,7 +10,11 @@ app = Flask(__name__)
 
 @app.route('/')
 def root():
-    return redirect("/static/home.html", code=302)
+    return render_template("/home/home.html", code=302)
+
+@app.route('/home', methods=['GET'])
+def home():
+    return render_template("/home/home.html", code=302)
 
 
 @app.route('/livechat', methods=['GET', 'POST'])
@@ -18,27 +23,24 @@ def livechat():
     if request.method == 'POST':
         newMessage = request.form['Msg']
     if newMessage:
-        #print(newMessage)
-        # from google.cloud import datastore//
-        # # Instantiate a client//
-        # datastore_client = datastore.Client()//
-        # kind = 'Messages'
         kind='Messages'
-        dbInt=random.randint(1,100)
         # name = 'Message'
-        name='Message '+str(dbInt)
+        now=datetime.now()
+        date_time = now.strftime("%m/%d/%Y, %H:%M:%S")
+        name='Message '+date_time
         # # The Cloud Datastore key for the new entity
         task_key = datastore_client.key(kind, name)
         # # Prepares the new entity
         task = datastore.Entity(key=task_key)
         task['message'] = newMessage
+        task['time']=now
         # # Saves the entity
         datastore_client.put(task)
 
-        print(datastore_client.get(task_key))
-
-
-    return redirect("/static/livechat.html", code=302)
+        query=datastore_client.query(kind='Messages')
+       #print(query.fetch(1))
+        #print(datastore_client.get(task_key))
+    return render_template('livechat/livechat.html')
 
 
 if __name__ == '__main__':
