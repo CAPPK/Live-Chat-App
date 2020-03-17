@@ -12,9 +12,32 @@ app = Flask(__name__)
 def root():
     return render_template("/home/home.html", code=302)
 
+
 @app.route('/home', methods=['GET'])
 def home():
     return render_template("/home/home.html", code=302)
+
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    usernameInput = ''
+    passwordInput = ''
+    if request.method == 'POST':
+        usernameInput = request.form['Username']
+        passwordInput = request.form['Password']
+        kind = 'User'
+        now=datetime.now()
+        date_time = now.strftime("%m/%d/%Y, %H:%M:%S")
+        name='User '+date_time
+        # # The Cloud Datastore key for the new entity
+        task_key = datastore_client.key(kind, name)
+        # # Prepares the new entity
+        task = datastore.Entity(key=task_key)
+        task['username'] = usernameInput
+        task['password'] = passwordInput
+        datastore_client.put(task)
+        return render_template("/home/home.html", code=302)
+    return render_template("/login/login.html", code=302)
 
 
 @app.route('/livechat', methods=['GET', 'POST'])
