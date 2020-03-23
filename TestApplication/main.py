@@ -18,6 +18,10 @@ def home():
     return render_template("/home/home.html", code=302)
 
 
+@app.route('/homeProfile', methods=['GET'])
+def homeProfile():
+    return render_template("/homeProfile/homeProfile.html", code=302)
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     usernameInput = ''
@@ -32,7 +36,23 @@ def login():
         # query.projection = ['priority']
         match = list(query.fetch())
         if match:
-            return render_template("/home/home.html", code=302)
+            query2 = datastore_client.query(kind='Session')
+            query2.add_filter('username', '=', usernameInput)
+            # query.projection = ['priority']
+            match2 = list(query2.fetch())
+            if match2:
+                return render_template("/homeProfile/homeProfile.html", ActiveUser=usernameInput)
+            else:
+                kind = 'Session'
+                name = usernameInput
+                # # The Cloud Datastore key for the new entity
+                task_key = datastore_client.key(kind, name)
+                # # Prepares the new entity
+                task = datastore.Entity(key=task_key)
+                task['username'] = usernameInput
+                task['session'] = 'Yes'
+                datastore_client.put(task)
+                return render_template("/homeProfile/homeProfile.html", ActiveUser=usernameInput)
         else:
             return render_template("/createuser/createuser.html", code=302)
     return render_template("/login/login.html", code=302)
