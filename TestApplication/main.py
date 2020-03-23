@@ -25,19 +25,46 @@ def login():
     if request.method == 'POST':
         usernameInput = request.form['Username']
         passwordInput = request.form['Password']
-        kind = 'User'
-        now=datetime.now()
-        date_time = now.strftime("%m/%d/%Y, %H:%M:%S")
-        name='User '+date_time
-        # # The Cloud Datastore key for the new entity
-        task_key = datastore_client.key(kind, name)
-        # # Prepares the new entity
-        task = datastore.Entity(key=task_key)
-        task['username'] = usernameInput
-        task['password'] = passwordInput
-        datastore_client.put(task)
-        return render_template("/home/home.html", code=302)
+
+        query = datastore_client.query(kind='User')
+        query.add_filter('username', '=', usernameInput)
+        query.add_filter('password', '=', passwordInput)
+        # query.projection = ['priority']
+        match = list(query.fetch())
+        if match:
+            return render_template("/home/home.html", code=302)
+        else:
+            return render_template("/createuser/createuser.html", code=302)
     return render_template("/login/login.html", code=302)
+
+
+@app.route('/createuser', methods=['GET', 'POST'])
+def createuser():
+    usernameInput = ''
+    passwordInput = ''
+    if request.method == 'POST':
+        usernameInput = request.form['Username']
+        passwordInput = request.form['Password']
+
+        query = datastore_client.query(kind='User')
+        query.add_filter('username', '=', usernameInput)
+        match = list(query.fetch())
+        if match:
+            return render_template("/createuser/createuser.html", code=302)
+        else:
+            kind = 'User'
+            now=datetime.now()
+            date_time = now.strftime("%m/%d/%Y, %H:%M:%S")
+            name='User '+date_time
+            # # The Cloud Datastore key for the new entity
+            task_key = datastore_client.key(kind, name)
+            # # Prepares the new entity
+            task = datastore.Entity(key=task_key)
+            task['username'] = usernameInput
+            task['password'] = passwordInput
+            datastore_client.put(task)
+            return render_template("/home/home.html", code=302)
+    return render_template("/createuser/createuser.html", code=302)
 
 
 @app.route('/livechat', methods=['GET', 'POST'])
