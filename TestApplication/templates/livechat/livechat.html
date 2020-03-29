@@ -1,0 +1,45 @@
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='livechat/style.css') }}">
+    <title>New Age Media</title>
+  </head>
+  <body>
+
+    <header>
+      <h1>Social Media</h1>
+    </header>
+
+    <section>
+        <!-- Nothing in here yet -->
+    </section>
+
+    <div class="chat-popup" id="myForm">
+        <form action="/livechat" method="POST" class="form-container">
+            <h2>Live Chat</h2>
+            <div contenteditable="false" placeholder="The live-feed will display here" class="livefeed" readonly="true">{%for messages in msgs%} <p> {{messages['time']}} - {{messages['message']}} </p> {%endfor %}</div>
+            
+            <h4>Type Message Below:</h4>
+            <!-- <textarea placeholder="Type message..." class="msg" name= "MSG" required></textarea> -->
+            <input type="text" placeholder="Type message..." class="msg" name="Msg" required />
+
+            <button type="submit" class="btn">Send</button>
+        </form>
+    </div>
+
+    <a href="livechat"><button type="connect" class="backbtn">Connect to Feed</button></a>
+    <a href="home"><button type="submit" class="backbtn">Return to Home Page</button></a>
+
+    <!-- <script>
+    function myFunction() {
+        setInterval(function(){ alert("Hello"); }, 3000);
+    }
+    </script> -->
+
+    <!-- <script>
+        query=datastore_client.query(kind='Messages')
+        query.order=['-time']
+        msgs=query.fetch(10)
+    </script> -->
+
+  </body>
+</html>
