@@ -12,11 +12,11 @@
     <div class="chat-popup" id="myForm">
         <form action="/privateSearchUser" method="POST" class="form-container">
             <h2>Private Messages</h2>
-            <div contenteditable="false" placeholder="The live-feed will display here" class="livefeed" readonly="true">{%for messages in msgs%} <p> {{messages['time']}} - {{messages['message']}} </p> {%endfor %}</div>
+            <div contenteditable="false" placeholder="The live-feed will display here" class="livefeed" readonly="true">{%for PrivateMessage in msgs%} <p> {{PrivateMessage['fromID']}} - {{PrivateMessage['time']}} - {{PrivateMessage['message']}} </p> {%endfor %}</div>
             
             <h4>Type New Message Below:</h4>
             <!-- <textarea placeholder="Type message..." class="msg" name= "MSG" required></textarea> -->
-            <input type="text" placeholder="To User Name..." class="msg" name="toUserName" required />
+            <input type="text" placeholder="To User Name..." class="msg" name="toID" required />
             <input type="text" placeholder="Type message..." class="msg" name="Msg" required />
 
             <button type="submit" class="btn">Send</button>
