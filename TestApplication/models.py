@@ -1,5 +1,3 @@
-# from .main import datastore
-# from .main import datastore_client
 from auth import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 
@@ -45,3 +43,14 @@ def getUser(usernameInput):
     if match:
         return User(usernameInput, password)
     return None
+
+
+def checkIfUser(usertoCheck):
+    from main import datastore
+    from main import datastore_client
+    query = datastore_client.query(kind='User')
+    query.add_filter('username', '=', usertoCheck)
+    match = list(query.fetch())
+    if match:
+        return True
+    return False
