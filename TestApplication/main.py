@@ -88,13 +88,13 @@ def livechat():
 def privateSearchUser():
     toID = ''
     fromID = ''
-    message = ''
+    toMessage = ''
 
     if request.method == 'POST':
         fromID = current_user.id
         toID = request.form['toID']
-        message = request.form['Msg']
-    if message:
+        toMessage = request.form['Msg']
+    if toMessage:
         kind = 'PrivateMessage'
         # name = 'Message'
         now = datetime.now()
@@ -104,7 +104,7 @@ def privateSearchUser():
         task_key = datastore_client.key(kind, name)
         # # Prepares the new entity
         task = datastore.Entity(key=task_key)
-        task['message'] = message
+        task['message'] = toMessage
         task['time'] = now
         task['toID'] = toID
         task['fromID'] = fromID
@@ -113,14 +113,14 @@ def privateSearchUser():
 
         query = datastore_client.query(kind='PrivateMessage')
         query.add_filter('toID', '=', current_user.id)
-        query.order = ['-time']
+        #query.order = ['-time']
         msgs = query.fetch()
-        return render_template('privateSearchUser/privateSearchUser.html', msgs=msgs)
+        return render_template('privateSearchUser/privateSearchUser.html', msgs=msgs, ActiveUser=current_user.id)
     query = datastore_client.query(kind='PrivateMessage')
     query.add_filter('toID', '=', current_user.id)
-    query.order = ['-time']
+    # query.order = ['-time']
     msgs = query.fetch()
-    return render_template('privateSearchUser/privateSearchUser.html', msgs=msgs)
+    return render_template('privateSearchUser/privateSearchUser.html', msgs=msgs, ActiveUser=current_user.id)
 
 
 if __name__ == '__main__':
