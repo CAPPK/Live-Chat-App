@@ -14,7 +14,14 @@
     </section>
 
     <div class="chat-popup" id="myForm">
-        <form action="/login" method="POST" class="form-container">
+      {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <div class="user-error">
+        {{ messages[0] }}
+        </div>
+      {% endif %}
+      {% endwith %}
+        <form action="{{url_for('auth.login')}}" method="POST" class="form-container">
             <h2>User Login</h2>
             <h4>Username:</h4>
             <input type="text" placeholder="Username..." class="username" name="Username" required />
@@ -26,7 +33,7 @@
         </form>
     </div>
 
-    <a href="home"><button type="submit" class="backbtn">Return to Home Page</button></a>
+    <a href="{{url_for('main.home')}}"><button type="submit" class="backbtn">Return to Home Page</button></a>
 
   </body>
 </html>

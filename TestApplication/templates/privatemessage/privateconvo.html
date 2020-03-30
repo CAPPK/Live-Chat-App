@@ -14,9 +14,10 @@
     </section>
 
     <div class="chat-popup" id="myForm">
-        <form action="/privateconvo" method="POST" class="form-container">
-            <h2>Live Chat</h2>
-            <div contenteditable="false" placeholder="The live-feed will display here" class="livefeed" readonly="true">{%for messages in msgs%} <p> {{messages['time']}} - {{messages['message']}} </p> {%endfor %}</div>
+        <form action="/privateConvo" method="POST" class="form-container">
+          <input type="text" style="display: none;" name="toUser" value="{{toUsername}}">
+            <h2>Private Chat</h2>
+            <div contenteditable="false" placeholder="The live-feed will display here" class="livefeed" readonly="true">{%for messages in msgs%} <p> {{messages['fromUsername']}} - {{messages['message']}} </p> {%endfor %}</div>
 
             <h4>Type Message Below:</h4>
             <input type="text" placeholder="Type message..." class="msg" name="Msg" required />

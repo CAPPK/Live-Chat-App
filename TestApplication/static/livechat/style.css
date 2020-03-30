@@ -1,201 +1,212 @@
-
 nav ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: gray;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background-color: gray;
 }
 
 nav ul li {
-  float: left;
+	float: left;
 }
 
 nav ul li a {
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 14px;
-  padding-left: 1px;
-  text-decoration: none;
+	display: block;
+	color: white;
+	text-align: center;
+	padding: 14px;
+	padding-left: 1px;
+	text-decoration: none;
 }
 
 nav ul li a:hover {
-  background-color: black;
+	background-color: black;
 }
 
 body {
-  font-family: "Courier New", Courier, monospace;
-  background-image: url("AbstractBackground.jpg");
-  background-position: center; /* Center the image */
-  background-repeat: no-repeat; /* Do not repeat the image */
-  background-size: cover; /* Resize the background image to cover the entire container */
-  text-align: center;
+	font-family: "Courier New", Courier, monospace;
+	background-image: url("AbstractBackground.jpg");
+	background-position: center; /* Center the image */
+	background-repeat: no-repeat; /* Do not repeat the image */
+	background-size: cover; /* Resize the background image to cover the entire container */
+	text-align: center;
 }
 
 title {
-text-align: center;
-font-family: "Courier New", Courier, monospace;
-text-decoration-color: white;
-color: white;
+	text-align: center;
+	font-family: "Courier New", Courier, monospace;
+	text-decoration-color: white;
+	color: white;
 }
 
 h1 {
-text-align: center;
-font-family: "Courier New", Courier, monospace;
-text-decoration-color: white;
-color: white;
+	text-align: center;
+	font-family: "Courier New", Courier, monospace;
+	text-decoration-color: white;
+	color: white;
 }
 
 h2 {
-text-align: center;
-font-family: "Courier New", Courier, monospace;
-text-decoration-color: black;
-color: black;
+	text-align: center;
+	font-family: "Courier New", Courier, monospace;
+	text-decoration-color: black;
+	color: black;
 }
 
 section {
-  font-size: 18pt;
-  background-color: none;
-  text-align: center;
-  text-decoration-color: white;
-  color: white;
+	font-size: 18pt;
+	background-color: none;
+	text-align: center;
+	text-decoration-color: white;
+	color: white;
 }
 
 aside {
-  background-color: lightpink; 
-  float: right;
+	background-color: lightpink;
+	float: right;
 }
 
 footer {
-  font-style: italic;
-  font-size: 8pt;
+	font-style: italic;
+	font-size: 8pt;
 }
 
 .livechatbtn {
-  background-color: rgb(255, 255, 255);
-  color: black;
-  padding: 16px 20px;
-  border: none;
-  cursor: pointer;
-  width: 50%;
-  margin-bottom:10px;
-  opacity: 0.8;
+	background-color: rgb(255, 255, 255);
+	color: black;
+	padding: 16px 20px;
+	border: none;
+	cursor: pointer;
+	width: 50%;
+	margin-bottom: 10px;
+	opacity: 0.8;
 }
 
 .loginbtn {
-background-color: rgb(255, 255, 255);
-  color: black;
-  padding: 16px 20px;
-  border: none;
-  cursor: pointer;
-  width: 50%;
-  margin-bottom:10px;
-  opacity: 0.8;
+	background-color: rgb(255, 255, 255);
+	color: black;
+	padding: 16px 20px;
+	border: none;
+	cursor: pointer;
+	width: 50%;
+	margin-bottom: 10px;
+	opacity: 0.8;
 }
 
 .createbtn {
-background-color: rgb(255, 255, 255);
-  color: black;
-  padding: 16px 20px;
-  border: none;
-  cursor: pointer;
-  width: 50%;
-  margin-bottom:10px;
-  opacity: 0.8;
+	background-color: rgb(255, 255, 255);
+	color: black;
+	padding: 16px 20px;
+	border: none;
+	cursor: pointer;
+	width: 50%;
+	margin-bottom: 10px;
+	opacity: 0.8;
 }
 
 /* Set a style for the submit/login button */
 .backbtn {
-  background-color: whitesmoke;
-  color: black;
-  padding: 16px 20px;
-  border: none;
-  cursor: pointer;
-  width: 75%;
-  margin-bottom:10px;
-  opacity: 0.8;
+	background-color: whitesmoke;
+	color: black;
+	padding: 16px 20px;
+	border: none;
+	cursor: pointer;
+	width: 75%;
+	margin-bottom: 10px;
+	opacity: 0.8;
 }
 
 /*-------------------------------------------------------------------------------------------------------------------*/
 
-*{box-sizing: border-box;}
+* {
+	box-sizing: border-box;
+}
 
 /* The popup chat - hidden by default */
 .form-popup {
-  display: none;
-  position: fixed;
-  bottom: 0;
-  right: 15px;
-  border: 3px solid #f1f1f1;
-  z-index: 9;
+	display: none;
+	position: fixed;
+	bottom: 0;
+	right: 15px;
+	border: 3px solid #f1f1f1;
+	z-index: 9;
 }
 
 /* Add styles to the form container 1200px */
 .form-container {
-  width: 75%;
-  max-width: 75%;
-  padding: 10px;
-  background-color: white;
-  display: inline-block;
-  opacity: 0.85;
+	width: 75%;
+	max-width: 75%;
+	padding: 10px;
+	background-color: white;
+	display: inline-block;
+	opacity: 0.85;
 }
 
 /* Full-width textarea */
 .form-container .livefeed {
-  width: 100%;
-  padding: 15px;
-  margin: 5px 0 22px 0;
-  border: none;
-  background: #f1f1f1;
-  resize: none;
-  min-height: 400px;
+	width: 100%;
+	padding: 15px;
+	margin: 5px 0 22px 0;
+	border: none;
+	background: #f1f1f1;
+	resize: none;
+	min-height: 400px;
 }
 
 /* Full-width textarea */
 .form-container .msg {
-  width: 100%;
-  padding: 15px;
-  margin: 5px 0 22px 0;
-  border: none;
-  background: #f1f1f1;
-  resize: none;
-  min-height: 50px;
+	width: 100%;
+	padding: 15px;
+	margin: 5px 0 22px 0;
+	border: none;
+	background: #f1f1f1;
+	resize: none;
+	min-height: 50px;
 }
 
 /* When the textarea gets focus, do something */
 .form-container textarea:focus {
-  background-color: #ddd;
-  outline: none;
+	background-color: #ddd;
+	outline: none;
 }
 
 /* Set a style for the submit/login button */
 .form-container .btn {
-  background-color: #4CAF50;
-  color: white;
-  padding: 16px 20px;
-  border: none;
-  cursor: pointer;
-  width: 100%;
-  margin-bottom:10px;
-  opacity: 0.8;
+	background-color: #4caf50;
+	color: white;
+	padding: 16px 20px;
+	border: none;
+	cursor: pointer;
+	width: 100%;
+	margin-bottom: 10px;
+	opacity: 0.8;
 }
 
 /* Add some hover effects to buttons */
-.form-container .btn:hover, .open-button:hover {
-  opacity: 1;
+.form-container .btn:hover,
+.open-button:hover {
+	opacity: 1;
 }
 div.editable {
-    width: 300px;
-    height: 200px;
-    border: 1px solid #ccc;
-    padding: 5px;
+	width: 300px;
+	height: 200px;
+	border: 1px solid #ccc;
+	padding: 5px;
 }
 
 .form-container .livefeed {
-    text-align: left;
+	text-align: left;
 }
 
 strong {
-  font-weight: bold;
+	font-weight: bold;
+}
+
+div div.user-error {
+	width: 75%;
+	max-width: 75%;
+	padding: 10px;
+	background-color: red;
+	display: inline-block;
+	opacity: 0.85;
 }
