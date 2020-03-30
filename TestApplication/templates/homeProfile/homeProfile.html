@@ -1,14 +1,9 @@
-<html>
-  <head>
+{% extends "base/base.html" %}
+{% block head %}
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='home/style.css') }}">
     <title>New Age Media</title>
-  </head>
-  <body>
-
-    <script>
-        
-    </script>
-
+{% endblock %}
+{% block body %}
     <header>
       <h1>{{ActiveUser}}'s New Age Media</h1>
     </header>
@@ -20,8 +15,8 @@
     <br><br><br><br>
     
     <a href="privatemessage"><button type="Login" class="loginbtn">DM's</button></a>
-    <a href="livechat"><button type="Login" class="livechatbtn">Live-Chat</button></a>
-    <a href="logout"><button type="Login" class="createbtn">Logout</button></a>
+    <a href="{{url_for('main.livechat')}}"><button type="Login" class="livechatbtn">Live-Chat</button></a>
+    <a href="{{url_for('auth.logout')}}"><button type="Login" class="createbtn">Logout</button></a>
 
-  </body>
+{%endblock %}
 </html>

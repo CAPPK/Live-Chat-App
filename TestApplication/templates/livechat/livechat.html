@@ -27,7 +27,13 @@
     </div>
 
     <a href="livechat"><button type="connect" class="backbtn">Connect to Feed</button></a>
-    <a href="home"><button type="submit" class="backbtn">Return to Home Page</button></a>
+    {% if current_user.is_authenticated %}
+    <a href="{{url_for('main.homeProfile')}}"><button type="submit" class="backbtn">Return to Home Page</button></a>
+    {% endif %}
+    {% if not current_user.is_authenticated %}
+    <a href="{{url_for('main.home')}}"><button type="submit" class="backbtn">Return to Home Page</button></a>
+    {% endif %}
+    
 
     <!-- <script>
     function myFunction() {

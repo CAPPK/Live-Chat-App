@@ -6,3 +6,7 @@ handlers:
 
 - url: /.*
   script: auto
+
+  libraries:
+- name: grpcio
+  version: 1.0.0
