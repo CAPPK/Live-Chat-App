@@ -1,0 +1,31 @@
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='livechat/style.css') }}">
+    <title>New Age Media</title>
+  </head>
+  <body>
+
+    <header>
+      <h1>Social Media</h1>
+    </header>
+
+    <section>
+        <!-- Nothing in here yet -->
+    </section>
+
+    <div class="chat-popup" id="myForm">
+        <form action="/privatemessage" method="POST" class="form-container">
+
+            <!-- <h4>Your Username:</h4>
+            <input type="text" placeholder="Your username..." class="username" name="fromUsernameIn" required /> -->
+            <h4> Their Username:</h4>
+            <input type="text" placeholder="Username you want to message..." class="username" name="toUsernameIn" required />
+
+            <button type="submit" class="btn">Message</button>
+        </form>
+    </div>
+
+    <a href="home"><button type="submit" class="backbtn">Return to Home Page</button></a>
+
+  </body>
+</html>

@@ -81,6 +81,98 @@ def livechat():
     msgs = query.fetch(10)
     return render_template('livechat/livechat.html', msgs=msgs)
     # return render_template('livechat/livechat.html')
+    
+
+@app.route('/privateConvo', methods=['GET', 'POST'])
+def privateConvo():
+    newMessage = ''
+    if request.method == 'POST':
+        newMessage = request.form['Msg']
+    if newMessage:
+        fromCurrentUsername = current_user.id
+        toOtherUsername = request.form['toUser']
+        kind='Private Message'
+        # name = 'Message'
+        now=datetime.now()
+        date_time = now.strftime("%m/%d/%Y, %H:%M:%S")
+        name='Private Message '+date_time
+        # # The Cloud Datastore key for the new entity
+        task_key = datastore_client.key(kind, name)
+        # # Prepares the new entity
+        task = datastore.Entity(key=task_key)
+        task['message'] = newMessage
+        task['time']=now
+        # # Saves the entity
+        datastore_client.put(task)
+
+    query1=datastore_client.query(kind='Private Message')
+    # May need to be ''+time', check afterwards
+    query1.order=['-time']
+    allMessages = query1.fetch()
+    relevantMessages = []
+
+    # Get all messages with the entered usernamed as fromUsername and toUsername
+    for entity in allMessages:
+        if entity[fromUsername] == fromCurrentUsername or entity[fromUsername] == toOtherUsername:
+            if entity[toUsername] == fromCurrentUsername or entity[toUsername] == toOtherUsername:
+                relevantMessages.append(entity)
+
+    return render_template('privatemessage/privateConvo.html', msgs=relevantMessages, toUsername=toOtherUsername)
+    #return render_template('livechat/livechat.html')
+
+@app.route('/privatemessage', methods=['GET', 'POST'])
+def privatemessage():
+    # fromUsernameInput = ''
+    toUsernameInput = ''
+
+    if request.method == 'POST':
+        fromUsernameInput = current_user.id
+        toUsernameInput = request.form['toUsernameIn']
+
+        # Verify fromUsername is valid
+        # fromQuery = datastore_client.query(kind='User')
+        # fromQuery.add_filter('username', '=', fromUsernameInput)
+        # fromUserMatch = list(fromQuery.fetch())
+        #
+        # if fromUserMatch:
+        #     # Verify toUsername is valid
+        #     toQuery = datastore_client.query(kind='User')
+        #     toQuery.add_filter('username', '=', toUsernameInput)
+        #     toUserMatch = list(query.fetch())
+        if toUserMatch:
+            # Get all private messages from datastore
+            query1=datastore_client.query(kind='Private Message')
+            # May need to be ''+time', check afterwards
+            query1.order=['-time']
+            allMessages = query1.fetch()
+            relevantMessages = []
+
+            # Get all messages with the entered usernamed as fromUsername and toUsername
+            for entity in allMessages:
+                if entity[fromUsername] == fromUsernameInput or entity[fromUsername] == toUsernameInput:
+                    if entity[toUsername] == fromUsernameInput or entity[toUsername] == toUsernameInput:
+                        relevantMessages.append(entity)
+
+                # query1=datastore_client.query(kind='Private Message')
+                # query1.add_filter('fromUsername', '=', fromUsernameInput)
+                # query1.add_filter('toUsername', '=', toUsernameInput)
+                # msgs1=query.fetch(10)
+                #
+                # query2=datastore_client.query(kind='Private Message')
+                # query2.add_filter('fromUsername', '=', toUsernameInput)
+                # query2.add_filter('toUsername', '=', fromUsernameInput)
+                # msgs2=query.fetch(10)
+
+                # msgs = msgs1 + msgs2
+                # msgs.sort(key=lambda x: x.count, reverse=True)
+
+                return render_template('privatemessage/privateConvo.html', msgs=relevantMessages, toUsername=toUsernameInput)
+
+        # if the request was not POST or the usernames they entered for Private Messaging were invalid, refresh the page
+    return render_template("/privatemessage/privateSearchUser.html", code=302)
+
+
+
 
 
 if __name__ == '__main__':
