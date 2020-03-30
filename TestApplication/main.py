@@ -1,6 +1,6 @@
 
 from auth import auth as auth_blueprint
-from flask import Blueprint, Flask, redirect, request, render_template
+from flask import Blueprint, Flask, redirect, request, render_template, url_for
 from google.cloud import datastore
 from datetime import datetime
 from flask_login import login_required, current_user, LoginManager
@@ -81,7 +81,7 @@ def livechat():
     msgs = query.fetch(10)
     return render_template('livechat/livechat.html', msgs=msgs)
     # return render_template('livechat/livechat.html')
-    
+
 
 @app.route('/privateConvo', methods=['GET', 'POST'])
 def privateConvo():
@@ -91,23 +91,23 @@ def privateConvo():
     if newMessage:
         fromCurrentUsername = current_user.id
         toOtherUsername = request.form['toUser']
-        kind='Private Message'
+        kind = 'Private Message'
         # name = 'Message'
-        now=datetime.now()
+        now = datetime.now()
         date_time = now.strftime("%m/%d/%Y, %H:%M:%S")
-        name='Private Message '+date_time
+        name = 'Private Message '+date_time
         # # The Cloud Datastore key for the new entity
         task_key = datastore_client.key(kind, name)
         # # Prepares the new entity
         task = datastore.Entity(key=task_key)
         task['message'] = newMessage
-        task['time']=now
+        task['time'] = now
         # # Saves the entity
         datastore_client.put(task)
 
-    query1=datastore_client.query(kind='Private Message')
+    query1 = datastore_client.query(kind='Private Message')
     # May need to be ''+time', check afterwards
-    query1.order=['-time']
+    query1.order = ['-time']
     allMessages = query1.fetch()
     relevantMessages = []
 
@@ -118,10 +118,12 @@ def privateConvo():
                 relevantMessages.append(entity)
 
     return render_template('privatemessage/privateConvo.html', msgs=relevantMessages, toUsername=toOtherUsername)
-    #return render_template('livechat/livechat.html')
+    # return render_template('livechat/livechat.html')
 
-@app.route('/privatemessage', methods=['GET', 'POST'])
-def privatemessage():
+
+@app.route('/privateSearchUser', methods=['GET', 'POST'])
+@login_required
+def privateSearchUser():
     # fromUsernameInput = ''
     toUsernameInput = ''
 
@@ -141,9 +143,9 @@ def privatemessage():
         #     toUserMatch = list(query.fetch())
         if toUserMatch:
             # Get all private messages from datastore
-            query1=datastore_client.query(kind='Private Message')
+            query1 = datastore_client.query(kind='Private Message')
             # May need to be ''+time', check afterwards
-            query1.order=['-time']
+            query1.order = ['-time']
             allMessages = query1.fetch()
             relevantMessages = []
 
@@ -169,10 +171,7 @@ def privatemessage():
                 return render_template('privatemessage/privateConvo.html', msgs=relevantMessages, toUsername=toUsernameInput)
 
         # if the request was not POST or the usernames they entered for Private Messaging were invalid, refresh the page
-    return render_template("/privatemessage/privateSearchUser.html", code=302)
-
-
-
+    return render_template('privateSearchUser/privateSearchUser.html', code='302')
 
 
 if __name__ == '__main__':
