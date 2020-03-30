@@ -1,6 +1,6 @@
-from . import datastore
-from . import datastore_client
-from .auth import generate_password_hash, check_password_hash
+# from .main import datastore
+# from .main import datastore_client
+from auth import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 
 
@@ -19,11 +19,13 @@ class User(UserMixin):
 
 
 def loading_user(usernameInput, userpassword):
+    from main import datastore
+    from main import datastore_client
     query = datastore_client.query(kind='User')
     query.add_filter('username', '=', usernameInput)
     match = list(query.fetch())
     password = ''
-    print(match)
+    # print(match)
     for task in query.fetch():
         password = task['password']
     if match and check_password_hash(password, userpassword):
@@ -32,6 +34,8 @@ def loading_user(usernameInput, userpassword):
 
 
 def getUser(usernameInput):
+    from main import datastore
+    from main import datastore_client
     query = datastore_client.query(kind='User')
     query.add_filter('username', '=', usernameInput)
     match = list(query.fetch())

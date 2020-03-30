@@ -1,96 +1,56 @@
+
+from auth import auth as auth_blueprint
 from flask import Blueprint, Flask, redirect, request, render_template
 from google.cloud import datastore
-# datastore_client = datastore.Client()
-# #import random
 from datetime import datetime
-from . import datastore_client
-from flask_login import login_required, current_user
+from flask_login import login_required, current_user, LoginManager
 
-
+datastore_client = datastore.Client()
 main = Blueprint('main', __name__)
 
 
-@main.route('/')
+def create_app():
+    """Construct the core app object."""
+    app = Flask(__name__)
+    app.config['SECRET_KEY'] = 'super secret key'
+
+    app.register_blueprint(auth_blueprint)
+
+    app.register_blueprint(main)
+
+    login_manager = LoginManager()
+    login_manager.login_view = 'auth.login'
+    login_manager.init_app(app)
+    from models import User, getUser
+
+    @login_manager.user_loader
+    def load_user(user_id):
+        # since the user_id is just the primary key of our user table, use it in the query for the user
+        return getUser(user_id)
+
+    return app
+
+
+app = create_app()
+
+
+@app.route('/')
 def root():
     return render_template("/home/home.html", code=302)
 
 
-@main.route('/home', methods=['GET'])
+@app.route('/home', methods=['GET'])
 def home():
     return render_template("/home/home.html", code=302)
 
 
-@main.route('/homeProfile', methods=['GET'])
+@app.route('/homeProfile', methods=['GET'])
 @login_required
 def homeProfile():
     return render_template("/homeProfile/homeProfile.html", ActiveUser=current_user.id, code=302)
 
-# @app.route('/login', methods=['GET', 'POST'])
-# def login():
-#     usernameInput = ''
-#     passwordInput = ''
-#     if request.method == 'POST':
-#         usernameInput = request.form['Username']
-#         passwordInput = request.form['Password']
 
-#         query = datastore_client.query(kind='User')
-#         query.add_filter('username', '=', usernameInput)
-#         query.add_filter('password', '=', passwordInput)
-#         # query.projection = ['priority']
-#         match = list(query.fetch())
-#         if match:
-#             query2 = datastore_client.query(kind='Session')
-#             query2.add_filter('username', '=', usernameInput)
-#             # query.projection = ['priority']
-#             match2 = list(query2.fetch())
-#             if match2:
-#                 return render_template("/homeProfile/homeProfile.html", ActiveUser=usernameInput)
-#             else:
-#                 kind = 'Session'
-#                 name = usernameInput
-#                 # # The Cloud Datastore key for the new entity
-#                 task_key = datastore_client.key(kind, name)
-#                 # # Prepares the new entity
-#                 task = datastore.Entity(key=task_key)
-#                 task['username'] = usernameInput
-#                 task['session'] = 'Yes'
-#                 datastore_client.put(task)
-#                 return render_template("/homeProfile/homeProfile.html", ActiveUser=usernameInput)
-#         else:
-#             return render_template("/createuser/createuser.html", code=302)
-#     return render_template("/login/login.html", code=302)
-
-
-# @app.route('/createuser', methods=['GET', 'POST'])
-# def createuser():
-#     usernameInput = ''
-#     passwordInput = ''
-#     if request.method == 'POST':
-#         usernameInput = request.form['Username']
-#         passwordInput = request.form['Password']
-
-#         query = datastore_client.query(kind='User')
-#         query.add_filter('username', '=', usernameInput)
-#         match = list(query.fetch())
-#         if match:
-#             return render_template("/createuser/createuser.html", code=302)
-#         else:
-#             kind = 'User'
-#             now=datetime.now()
-#             date_time = now.strftime("%m/%d/%Y, %H:%M:%S")
-#             name='User '+date_time
-#             # # The Cloud Datastore key for the new entity
-#             task_key = datastore_client.key(kind, name)
-#             # # Prepares the new entity
-#             task = datastore.Entity(key=task_key)
-#             task['username'] = usernameInput
-#             task['password'] = passwordInput
-#             datastore_client.put(task)
-#             return render_template("/home/home.html", code=302)
-#     return render_template("/createuser/createuser.html", code=302)
-
-
-@main.route('/livechat', methods=['GET', 'POST'])
+@app.route('/livechat', methods=['GET', 'POST'])
 def livechat():
     newMessage = ''
     if request.method == 'POST':
@@ -123,5 +83,5 @@ def livechat():
     # return render_template('livechat/livechat.html')
 
 
-# if __name__ == '__main__':
-#     app.run(host='127.0.0.1', port=8080, debug=True)
+if __name__ == '__main__':
+    app.run(host='127.0.0.1', port=8080, debug=True)

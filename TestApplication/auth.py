@@ -4,8 +4,8 @@ from werkzeug.security import generate_password_hash, check_password_hash
 # datastore_client = datastore.Client()
 # #import random
 from datetime import datetime
-from . import datastore_client
-from .models import User, loading_user
+# from .main import datastore_client
+
 from flask_login import login_user, login_required, logout_user
 
 
@@ -25,7 +25,7 @@ auth = Blueprint('auth', __name__)
 @login_required
 def logout():
     logout_user()
-    return redirect(url_for('main.home'))
+    return redirect(url_for('home'))
 
 
 @auth.route('/login', methods=['GET', 'POST'])
@@ -35,11 +35,11 @@ def login():
     if request.method == 'POST':
         usernameInput = request.form['Username']
         passwordInput = request.form['Password']
-
+        from models import User, loading_user
         user = loading_user(usernameInput, passwordInput)
         if user:
             login_user(user, remember=True)
-            return redirect(url_for('main.homeProfile'))
+            return redirect(url_for('homeProfile'))
         else:
             flash('Please check login details and try again')
             return redirect(url_for('auth.login'))
@@ -48,6 +48,7 @@ def login():
 
 @auth.route('/createuser', methods=['GET', 'POST'])
 def createuser():
+    from main import datastore_client
     usernameInput = ''
     passwordInput = ''
     if request.method == 'POST':
