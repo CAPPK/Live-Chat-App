@@ -9,7 +9,6 @@ from itertools import chain
 datastore_client = datastore.Client()
 main = Blueprint('main', __name__)
 
-
 def create_app():
     """Construct the core app object."""
     app = Flask(__name__)
@@ -75,6 +74,7 @@ def livechat():
         else:
             task['message'] = newMessage
         task['time'] = now
+        task['timeToShow']=now.strftime("%x %X")
         # # Saves the entity
         datastore_client.put(task)
 

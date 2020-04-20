@@ -19,7 +19,7 @@
             <div contenteditable="false" placeholder="The live-feed will display here" class="livefeed" readonly="true">
               {%for messages in msgs%}
                 <p> 
-                  {{messages['time']}} - {{messages['message']}} 
+                  <b>{{messages['timeToShow']}}</b> - {{messages['message']}} 
                 </p> 
               {%endfor %}
             </div>
