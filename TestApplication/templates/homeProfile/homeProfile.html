@@ -1,22 +1,36 @@
-{% extends "base/base.html" %}
-{% block head %}
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='home/style.css') }}">
-    <title>New Age Media</title>
-{% endblock %}
-{% block body %}
-    <header>
-      <h1>{{ActiveUser}}'s New Age Media</h1>
-    </header>
+<!-- {% extends "base/base.html" %}
+{% block head %} -->
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='home/style.css') }}">
+        <title>New Age Media</title>
+    </head>
+<!-- {% endblock %}
+{% block body %} -->
+    <body>
+        <header>
+        <h1>{{ActiveUser}}'s New Age Media</h1>
+        </header>
 
-    <br><br>
-    <section> Welcome to New Age Media {{ActiveUser}}!</section><br>
-    <section> We are currently under site construction... the only fuctioning part is Live-Chat</section> <br>
-    <section> Finish date tbd... Enjoy Live-Chat! </section><br>
-    <br><br><br><br>
-    
-    <a href="{{url_for('privateSearchUser')}}"><button type="Login" class="loginbtn">DM's</button></a>
-    <a href="{{url_for('livechat')}}"><button type="Login" class="livechatbtn">Live-Chat</button></a>
-    <a href="{{url_for('auth.logout')}}"><button type="Login" class="createbtn">Logout</button></a>
+        <br></br><br></br>
+        <div class="form-style-7">
+            <div class="left-div">
+                <h1> Welcome to New Age Media! </h1>
+                <h1> We are currently under site construction... the only fuctioning part is Live-Chat</h1>
+                <h1> Finish date tbd... Enjoy Live-Chat! </h1>
+            </div>
 
-{%endblock %}
+
+            <!-- <section> Welcome to New Age Media! </section><br>
+                <section> We are currently under site construction... the only fuctioning part is Live-Chat</section> <br>
+                <section> Finish date tbd... Enjoy Live-Chat! </section><br> -->
+            
+            <div class="right-div">
+                <a href="{{url_for('privateSearchUser')}}"><button type="Login" class="loginbtn">DM's</button></a>
+                <a href="{{url_for('livechat')}}"><button type="Login" class="livechatbtn">Live-Chat</button></a>
+                <a href="{{url_for('auth.logout')}}"><button type="Login" class="createbtn">Logout</button></a>
+            </div>
+        </div>
+    </body>
+<!-- {%endblock %} -->
 </html>

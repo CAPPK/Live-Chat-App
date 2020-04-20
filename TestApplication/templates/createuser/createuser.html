@@ -1,6 +1,6 @@
 <html>
   <head>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='livechat/style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='home/style.css') }}">
     <title>New Age Media</title>
   </head>
   <body>
@@ -13,7 +13,7 @@
         <!-- Nothing in here yet -->
     </section>
 
-    <div class="chat-popup" id="myForm">
+    <div class="form-style-6" id="myForm">
       {% with messages = get_flashed_messages() %}
       {% if messages %}
         <div class="user-error">
@@ -21,12 +21,12 @@
         </div>
       {% endif %}
       {% endwith %}
-        <form action="/createuser" method="POST" class="form-container">
-            <h2>User Creation</h2>
-            <h4>Username:</h4>
+        <form action="/createuser" method="POST">
+            <h1>User Creation</h1>
+            <!-- <h2>Username:</h2> -->
             <input type="text" placeholder="Username..." class="username" name="Username" required />
 
-            <h4>Password:</h4>
+            <!-- <h2>Password:</h2> -->
             <input type="text" placeholder="Password..." class="password" name="Password" required />
 
             <button type="submit" class="btn">Send</button>

@@ -31,6 +31,7 @@ body {
   background-repeat: no-repeat; /* Do not repeat the image */
   background-size: cover; /* Resize the background image to cover the entire container */
   text-align: center;
+  height: 100%;
 }
 
 title {
@@ -73,8 +74,8 @@ footer {
 }
 
 .livechatbtn {
-  background-color: rgb(255, 255, 255);
-  color: black;
+  background-color: rgb(102, 72, 128);
+  color: white;
   padding: 16px 20px;
   border: none;
   cursor: pointer;
@@ -84,8 +85,8 @@ footer {
 }
 
 .loginbtn {
-background-color: rgb(255, 255, 255);
-  color: black;
+background-color: rgb(102, 72, 128);
+  color: white;
   padding: 16px 20px;
   border: none;
   cursor: pointer;
@@ -95,8 +96,8 @@ background-color: rgb(255, 255, 255);
 }
 
 .createbtn {
-background-color: rgb(255, 255, 255);
-  color: black;
+background-color: rgb(102, 72, 128);
+  color: white;
   padding: 16px 20px;
   border: none;
   cursor: pointer;
@@ -107,12 +108,12 @@ background-color: rgb(255, 255, 255);
 
 /* Set a style for the submit/login button */
 .backbtn {
-  background-color: whitesmoke;
-  color: black;
+  background-color: rgb(102, 72, 128);
+  color: white;
   padding: 16px 20px;
   border: none;
   cursor: pointer;
-  width: 75%;
+  width: 50%;
   margin-bottom:10px;
   opacity: 0.8;
 }
@@ -184,4 +185,176 @@ background-color: rgb(255, 255, 255);
 /* Add some hover effects to buttons */
 .form-container .btn:hover, .open-button:hover {
   opacity: 1;
+}
+
+/* This is the format for the new form */
+/* --------------------------------------------------------------------------------------------------*/
+
+.form-style-6{
+	font: 95% Arial, Helvetica, sans-serif;
+	max-width: 600px;
+	margin: 10px auto;
+	padding: 16px;
+	background: #F7F7F7;
+}
+.form-style-6 h1{
+	background: rgb(102, 72, 128);
+	padding: 20px 0;
+	font-size: 140%;
+	font-weight: 300;
+	text-align: center;
+	color: #fff;
+	margin: -16px -16px 16px -16px;
+}
+
+.form-style-6 h2{
+	background: #F7F7F7;
+	padding: 3%;
+	font-size: 140%;
+	font-weight: 300;
+	text-align: left;
+	color: rgb(102, 72, 128);
+	margin: -16px -16px 16px -16px;
+}
+
+.form-style-6 .left-div{
+    font: 95% Arial, Helvetica, sans-serif;
+	width: 45%;
+    float: left;
+    background: #F7F7F7;
+    align-content: center;
+    text-align: center;
+    opacity: 0.7;
+}
+
+.form-style-6 .right-div{
+    font: 95% Arial, Helvetica, sans-serif;
+	width: 45%;
+    float: right;
+    background: #F7F7F7;
+    align-content: center;
+    text-align: center;
+    opacity: 0.7;
+}
+
+.form-style-6 input[type="text"],
+.form-style-6 input[type="date"],
+.form-style-6 input[type="datetime"],
+.form-style-6 input[type="email"],
+.form-style-6 input[type="number"],
+.form-style-6 input[type="search"],
+.form-style-6 input[type="time"],
+.form-style-6 input[type="url"],
+.form-style-6 textarea,
+.form-style-6 select 
+{
+	-webkit-transition: all 0.30s ease-in-out;
+	-moz-transition: all 0.30s ease-in-out;
+	-ms-transition: all 0.30s ease-in-out;
+	-o-transition: all 0.30s ease-in-out;
+	outline: none;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	width: 100%;
+	background: #fff;
+	margin-bottom: 4%;
+	border: 1px solid #ccc;
+	padding: 3%;
+	color: #555;
+	font: 95% Arial, Helvetica, sans-serif;
+}
+.form-style-6 input[type="text"]:focus,
+.form-style-6 input[type="date"]:focus,
+.form-style-6 input[type="datetime"]:focus,
+.form-style-6 input[type="email"]:focus,
+.form-style-6 input[type="number"]:focus,
+.form-style-6 input[type="search"]:focus,
+.form-style-6 input[type="time"]:focus,
+.form-style-6 input[type="url"]:focus,
+.form-style-6 textarea:focus,
+.form-style-6 select:focus
+{
+	box-shadow: 0 0 5px rgb(102, 72, 128);
+	padding: 3%;
+	border: 1px solid rgb(102, 72, 128);
+}
+
+.form-style-6 .btn {
+  background-color: rgb(102, 72, 128);
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 50%;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+
+.form-style-6 input[type="submit"],
+.form-style-6 input[type="button"]{
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	width: 100%;
+	padding: 3%;
+	background: rgb(102, 72, 128);
+	border-bottom: 2px solid rgb(21, 13, 27);
+	border-top-style: none;
+	border-right-style: none;
+	border-left-style: none;	
+	color: #fff;
+}
+.form-style-6 input[type="submit"]:hover,
+.form-style-6 input[type="button"]:hover{
+	background: rgb(131, 102, 156);
+}
+
+/* NEXT HOME SECTION*/
+.form-style-7{
+	font: 95% Arial, Helvetica, sans-serif;
+	max-width: 75%;
+    max-height: 75%;
+	margin: 0px auto;
+	padding: 5px;
+	background: rgba(247, 247, 247, 0);
+    align-self: center;
+    vertical-align: center;
+}
+.form-style-7 h1{
+	background: rgba(102, 72, 128, 0.808);
+	padding: 20px 0;
+	font-size: 140%;
+	font-weight: 300;
+	text-align: center;
+	color: #fff;
+	margin: -16px -16px 16px -16px;
+}
+
+.form-style-7 h2{
+	background: #F7F7F7;
+	padding: 3%;
+	font-size: 140%;
+	font-weight: 300;
+	text-align: left;
+	color: rgb(102, 72, 128);
+	margin: -16px -16px 16px -16px;
+}
+
+.form-style-7 .left-div{
+    font: 95% Arial, Helvetica, sans-serif;
+	width: 45%;
+    float: left;
+    background: rgba(247, 247, 247, 0);
+    align-content: center;
+    text-align: center;
+}
+
+.form-style-7 .right-div{
+    font: 95% Arial, Helvetica, sans-serif;
+	width: 45%;
+    float: right;
+    background: rgb(247, 247, 247, 0);
+    align-content: center;
+    text-align: center;
 }

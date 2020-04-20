@@ -1,6 +1,6 @@
 <html>
   <head>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='livechat/style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='home/style.css') }}">
     <title>New Age Media</title>
   </head>
   <body>
@@ -13,12 +13,12 @@
         <!-- Nothing in here yet -->
     </section>
 
-    <div class="chat-popup" id="myForm">
-        <form action="/livechat" method="POST" class="form-container">
-            <h2>Live Chat</h2>
+    <div class="form-style-6" id="myForm">
+        <form action="/livechat" method="POST">
+            <h1>Live Chat</h1>
             <div contenteditable="false" placeholder="The live-feed will display here" class="livefeed" readonly="true">{%for messages in msgs%} <p> {{messages['time']}} - {{messages['message']}} </p> {%endfor %}</div>
             
-            <h4>Type Message Below:</h4>
+            <!-- <h4>Type Message Below:</h4> -->
             <!-- <textarea placeholder="Type message..." class="msg" name= "MSG" required></textarea> -->
             <input type="text" placeholder="Type message..." class="msg" name="Msg" required />
 
