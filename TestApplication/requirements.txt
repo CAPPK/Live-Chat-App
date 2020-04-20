@@ -3,3 +3,5 @@ google-cloud-datastore
 flask-login
 google-cloud-ndb
 googleapis_common_protos
+Flask-RESTful==0.3.8
+requests==2.23.0

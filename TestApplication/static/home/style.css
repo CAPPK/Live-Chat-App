@@ -1,203 +1,205 @@
-
 nav ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: gray;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background-color: gray;
 }
 
 nav ul li {
-  float: left;
+	float: left;
 }
 
 nav ul li a {
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 14px;
-  padding-left: 1px;
-  text-decoration: none;
+	display: block;
+	color: white;
+	text-align: center;
+	padding: 14px;
+	padding-left: 1px;
+	text-decoration: none;
 }
 
 nav ul li a:hover {
-  background-color: black;
+	background-color: black;
 }
 
 body {
-  font-family: "Courier New", Courier, monospace;
-  background-image: url("AbstractBackground.jpg");
-  background-position: center; /* Center the image */
-  background-repeat: no-repeat; /* Do not repeat the image */
-  background-size: cover; /* Resize the background image to cover the entire container */
-  text-align: center;
-  height: 100%;
+	font-family: "Courier New", Courier, monospace;
+	background-image: url("AbstractBackground.jpg");
+	background-position: center; /* Center the image */
+	background-repeat: no-repeat; /* Do not repeat the image */
+	background-size: cover; /* Resize the background image to cover the entire container */
+	text-align: center;
+	height: 100%;
 }
 
 title {
-text-align: center;
-font-family: "Courier New", Courier, monospace;
-text-decoration-color: white;
-color: white;
+	text-align: center;
+	font-family: "Courier New", Courier, monospace;
+	text-decoration-color: white;
+	color: white;
 }
 
 h1 {
-text-align: center;
-font-family: "Courier New", Courier, monospace;
-text-decoration-color: white;
-color: white;
+	text-align: center;
+	font-family: "Courier New", Courier, monospace;
+	text-decoration-color: white;
+	color: white;
 }
 
 h2 {
-text-align: center;
-font-family: "Courier New", Courier, monospace;
-text-decoration-color: black;
-color: black;
+	text-align: center;
+	font-family: "Courier New", Courier, monospace;
+	text-decoration-color: black;
+	color: black;
 }
 
 section {
-  font-size: 18pt;
-  background-color: none;
-  text-align: center;
-  text-decoration-color: white;
-  color: white;
+	font-size: 18pt;
+	background-color: none;
+	text-align: center;
+	text-decoration-color: white;
+	color: white;
 }
 
 aside {
-  background-color: lightpink; 
-  float: right;
+	background-color: lightpink;
+	float: right;
 }
 
 footer {
-  font-style: italic;
-  font-size: 8pt;
+	font-style: italic;
+	font-size: 8pt;
 }
 
 .livechatbtn {
-  background-color: rgb(102, 72, 128);
-  color: white;
-  padding: 16px 20px;
-  border: none;
-  cursor: pointer;
-  width: 50%;
-  margin-bottom:10px;
-  opacity: 0.8;
+	background-color: rgb(102, 72, 128);
+	color: white;
+	padding: 16px 20px;
+	border: none;
+	cursor: pointer;
+	width: 50%;
+	margin-bottom: 10px;
+	opacity: 0.8;
 }
 
 .loginbtn {
-background-color: rgb(102, 72, 128);
-  color: white;
-  padding: 16px 20px;
-  border: none;
-  cursor: pointer;
-  width: 50%;
-  margin-bottom:10px;
-  opacity: 0.8;
+	background-color: rgb(102, 72, 128);
+	color: white;
+	padding: 16px 20px;
+	border: none;
+	cursor: pointer;
+	width: 50%;
+	margin-bottom: 10px;
+	opacity: 0.8;
 }
 
 .createbtn {
-background-color: rgb(102, 72, 128);
-  color: white;
-  padding: 16px 20px;
-  border: none;
-  cursor: pointer;
-  width: 50%;
-  margin-bottom:10px;
-  opacity: 0.8;
+	background-color: rgb(102, 72, 128);
+	color: white;
+	padding: 16px 20px;
+	border: none;
+	cursor: pointer;
+	width: 50%;
+	margin-bottom: 10px;
+	opacity: 0.8;
 }
 
 /* Set a style for the submit/login button */
 .backbtn {
-  background-color: rgb(102, 72, 128);
-  color: white;
-  padding: 16px 20px;
-  border: none;
-  cursor: pointer;
-  width: 50%;
-  margin-bottom:10px;
-  opacity: 0.8;
+	background-color: rgb(102, 72, 128);
+	color: white;
+	padding: 16px 20px;
+	border: none;
+	cursor: pointer;
+	width: 50%;
+	margin-bottom: 10px;
+	opacity: 0.8;
 }
 
 /*-------------------------------------------------------------------------------------------------------------------*/
 
-*{box-sizing: border-box;}
+* {
+	box-sizing: border-box;
+}
 
 /* The popup chat - hidden by default */
 .form-popup {
-  display: none;
-  position: fixed;
-  bottom: 0;
-  right: 15px;
-  border: 3px solid #f1f1f1;
-  z-index: 9;
+	display: none;
+	position: fixed;
+	bottom: 0;
+	right: 15px;
+	border: 3px solid #f1f1f1;
+	z-index: 9;
 }
 
 /* Add styles to the form container 1200px */
 .form-container {
-  width: 75%;
-  max-width: 75%;
-  padding: 10px;
-  background-color: white;
-  display: inline-block;
-  opacity: 0.85;
+	width: 75%;
+	max-width: 75%;
+	padding: 10px;
+	background-color: white;
+	display: inline-block;
+	opacity: 0.85;
 }
 
 /* Full-width textarea */
 .form-container .livefeed {
-  width: 100%;
-  padding: 15px;
-  margin: 5px 0 22px 0;
-  border: none;
-  background: #f1f1f1;
-  resize: none;
-  min-height: 400px;
+	width: 100%;
+	padding: 15px;
+	margin: 5px 0 22px 0;
+	border: none;
+	background: #f1f1f1;
+	resize: none;
+	min-height: 400px;
 }
 
 /* Full-width textarea */
 .form-container .msg {
-  width: 100%;
-  padding: 15px;
-  margin: 5px 0 22px 0;
-  border: none;
-  background: #f1f1f1;
-  resize: none;
-  min-height: 50px;
+	width: 100%;
+	padding: 15px;
+	margin: 5px 0 22px 0;
+	border: none;
+	background: #f1f1f1;
+	resize: none;
+	min-height: 50px;
 }
 
 /* When the textarea gets focus, do something */
 .form-container textarea:focus {
-  background-color: #ddd;
-  outline: none;
+	background-color: #ddd;
+	outline: none;
 }
 
 /* Set a style for the submit/login button */
 .form-container .btn {
-  background-color: #4CAF50;
-  color: white;
-  padding: 16px 20px;
-  border: none;
-  cursor: pointer;
-  width: 100%;
-  margin-bottom:10px;
-  opacity: 0.8;
+	background-color: #4caf50;
+	color: white;
+	padding: 16px 20px;
+	border: none;
+	cursor: pointer;
+	width: 100%;
+	margin-bottom: 10px;
+	opacity: 0.8;
 }
 
 /* Add some hover effects to buttons */
-.form-container .btn:hover, .open-button:hover {
-  opacity: 1;
+.form-container .btn:hover,
+.open-button:hover {
+	opacity: 1;
 }
 
 /* This is the format for the new form */
 /* --------------------------------------------------------------------------------------------------*/
 
-.form-style-6{
+.form-style-6 {
 	font: 95% Arial, Helvetica, sans-serif;
 	max-width: 600px;
 	margin: 10px auto;
 	padding: 16px;
-	background: #F7F7F7;
+	background: #f7f7f7;
 }
-.form-style-6 h1{
+.form-style-6 h1 {
 	background: rgb(102, 72, 128);
 	padding: 20px 0;
 	font-size: 140%;
@@ -207,8 +209,8 @@ background-color: rgb(102, 72, 128);
 	margin: -16px -16px 16px -16px;
 }
 
-.form-style-6 h2{
-	background: #F7F7F7;
+.form-style-6 h2 {
+	background: #f7f7f7;
 	padding: 3%;
 	font-size: 140%;
 	font-weight: 300;
@@ -217,24 +219,24 @@ background-color: rgb(102, 72, 128);
 	margin: -16px -16px 16px -16px;
 }
 
-.form-style-6 .left-div{
-    font: 95% Arial, Helvetica, sans-serif;
+.form-style-6 .left-div {
+	font: 95% Arial, Helvetica, sans-serif;
 	width: 45%;
-    float: left;
-    background: #F7F7F7;
-    align-content: center;
-    text-align: center;
-    opacity: 0.7;
+	float: left;
+	background: #f7f7f7;
+	align-content: center;
+	text-align: center;
+	opacity: 0.7;
 }
 
-.form-style-6 .right-div{
-    font: 95% Arial, Helvetica, sans-serif;
+.form-style-6 .right-div {
+	font: 95% Arial, Helvetica, sans-serif;
 	width: 45%;
-    float: right;
-    background: #F7F7F7;
-    align-content: center;
-    text-align: center;
-    opacity: 0.7;
+	float: right;
+	background: #f7f7f7;
+	align-content: center;
+	text-align: center;
+	opacity: 0.7;
 }
 
 .form-style-6 input[type="text"],
@@ -247,8 +249,7 @@ background-color: rgb(102, 72, 128);
 .form-style-6 input[type="time"],
 .form-style-6 input[type="url"],
 .form-style-6 textarea,
-.form-style-6 select 
-{
+.form-style-6 select {
 	-webkit-transition: all 0.30s ease-in-out;
 	-moz-transition: all 0.30s ease-in-out;
 	-ms-transition: all 0.30s ease-in-out;
@@ -275,26 +276,25 @@ background-color: rgb(102, 72, 128);
 .form-style-6 input[type="time"]:focus,
 .form-style-6 input[type="url"]:focus,
 .form-style-6 textarea:focus,
-.form-style-6 select:focus
-{
+.form-style-6 select:focus {
 	box-shadow: 0 0 5px rgb(102, 72, 128);
 	padding: 3%;
 	border: 1px solid rgb(102, 72, 128);
 }
 
 .form-style-6 .btn {
-  background-color: rgb(102, 72, 128);
-  color: white;
-  padding: 16px 20px;
-  border: none;
-  cursor: pointer;
-  width: 50%;
-  margin-bottom:10px;
-  opacity: 0.8;
+	background-color: rgb(102, 72, 128);
+	color: white;
+	padding: 16px 20px;
+	border: none;
+	cursor: pointer;
+	width: 50%;
+	margin-bottom: 10px;
+	opacity: 0.8;
 }
 
 .form-style-6 input[type="submit"],
-.form-style-6 input[type="button"]{
+.form-style-6 input[type="button"] {
 	box-sizing: border-box;
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
@@ -304,26 +304,26 @@ background-color: rgb(102, 72, 128);
 	border-bottom: 2px solid rgb(21, 13, 27);
 	border-top-style: none;
 	border-right-style: none;
-	border-left-style: none;	
+	border-left-style: none;
 	color: #fff;
 }
 .form-style-6 input[type="submit"]:hover,
-.form-style-6 input[type="button"]:hover{
+.form-style-6 input[type="button"]:hover {
 	background: rgb(131, 102, 156);
 }
 
 /* NEXT HOME SECTION*/
-.form-style-7{
+.form-style-7 {
 	font: 95% Arial, Helvetica, sans-serif;
 	max-width: 75%;
-    max-height: 75%;
+	max-height: 75%;
 	margin: 0px auto;
 	padding: 5px;
 	background: rgba(247, 247, 247, 0);
-    align-self: center;
-    vertical-align: center;
+	align-self: center;
+	vertical-align: center;
 }
-.form-style-7 h1{
+.form-style-7 h1 {
 	background: rgba(102, 72, 128, 0.808);
 	padding: 20px 0;
 	font-size: 140%;
@@ -333,8 +333,8 @@ background-color: rgb(102, 72, 128);
 	margin: -16px -16px 16px -16px;
 }
 
-.form-style-7 h2{
-	background: #F7F7F7;
+.form-style-7 h2 {
+	background: #f7f7f7;
 	padding: 3%;
 	font-size: 140%;
 	font-weight: 300;
@@ -343,21 +343,51 @@ background-color: rgb(102, 72, 128);
 	margin: -16px -16px 16px -16px;
 }
 
-.form-style-7 .left-div{
-    font: 95% Arial, Helvetica, sans-serif;
+.form-style-7 .left-div {
+	font: 95% Arial, Helvetica, sans-serif;
 	width: 45%;
-    float: left;
-    background: rgba(247, 247, 247, 0);
-    align-content: center;
-    text-align: center;
+	float: left;
+	background: rgba(247, 247, 247, 0);
+	align-content: center;
+	text-align: center;
+}
+.form-style-7 .left-div .btn {
+	font: 95% Arial, Helvetica, sans-serif;
+	width: 45%;
+	float: left;
+	background: rgba(247, 247, 247, 0);
+	align-content: center;
+	text-align: center;
+}
+.form-style-7 .left-div button {
+	font: 95% Arial, Helvetica, sans-serif;
+	width: 45%;
+	float: left;
+	background: rgba(247, 247, 247, 0);
+	align-content: center;
+	text-align: center;
+}
+.form-style-7 .left-div input {
+	font: 95% Arial, Helvetica, sans-serif;
+	width: 45%;
+	float: left;
+	background: rgba(247, 247, 247, 0);
+	align-content: center;
+	text-align: center;
+}
+.weather-info {
+	background: rgb(102, 72, 128);
+  margin: 5% 5% 5% 5%;
+  width: 45%;
+  float: right;
+  font-weight: bold;
 }
 
-.form-style-7 .right-div{
-    font: 95% Arial, Helvetica, sans-serif;
+.form-style-7 .right-div {
+	font: 95% Arial, Helvetica, sans-serif;
 	width: 45%;
-    float: right;
-    background: rgb(247, 247, 247, 0);
-    align-content: center;
-    text-align: center;
+	float: right;
+	background: rgb(247, 247, 247, 0);
+	align-content: center;
+	text-align: center;
 }
-

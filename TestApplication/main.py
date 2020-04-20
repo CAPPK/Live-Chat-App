@@ -4,7 +4,9 @@ from flask import Blueprint, Flask, redirect, request, render_template, url_for,
 from google.cloud import datastore
 from datetime import datetime
 from flask_login import login_required, current_user, LoginManager
+from flask_restful import Api
 from itertools import chain
+from api import API_getWeather
 
 datastore_client = datastore.Client()
 main = Blueprint('main', __name__)
@@ -33,6 +35,8 @@ def create_app():
 
 app = create_app()
 
+api = Api(app)
+api.add_resource(API_getWeather, '/weather')
 
 @app.route('/')
 def root():
