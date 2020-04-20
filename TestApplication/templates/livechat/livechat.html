@@ -16,8 +16,8 @@
     <div class="chat-popup" id="myForm">
         <form action="/livechat" method="POST" class="form-container">
             <h2>Live Chat</h2>
-            <div contenteditable="false" placeholder="The live-feed will display here" class="livefeed" readonly="true">{%for messages in msgs%} <p> {{messages['time']}} - {{messages['message']}} </p> {%endfor %}</div>
-            
+            <div contenteditable="false" placeholder="The live-feed will display here" class="livefeed" readonly="true">{%for messages in msgs%} <p> {{messages['time'][0:16]}} - {{messages['message']}} </p> {%endfor %}</div>
+
             <h4>Type Message Below:</h4>
             <!-- <textarea placeholder="Type message..." class="msg" name= "MSG" required></textarea> -->
             <input type="text" placeholder="Type message..." class="msg" name="Msg" required />
@@ -33,7 +33,7 @@
     {% if not current_user.is_authenticated %}
     <a href="{{url_for('main.home')}}"><button type="submit" class="backbtn">Return to Home Page</button></a>
     {% endif %}
-    
+
 
     <!-- <script>
     function myFunction() {
