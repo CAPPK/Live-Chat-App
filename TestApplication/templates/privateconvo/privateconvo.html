@@ -1,33 +1,46 @@
 <html>
-  <head>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='livechat/style.css') }}">
+<head>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='home/style.css') }}">
     <title>New Age Media</title>
-  </head>
-  <body>
-
+</head>
+<body>
     <header>
-      <h1>Social Media</h1>
+      <h1>{{ActiveUser}}'s Conversations</h1>
     </header>
-
-    <section>
-        <!-- Nothing in here yet -->
-    </section>
-
-    <div class="chat-popup" id="myForm">
-        <form action="/privateConvo" method="POST" class="form-container">
-          <input type="text" style="display: none;" name="toUser" value="{{toUsername}}">
-            <h2>Private Chat</h2>
-            <div contenteditable="false" placeholder="The live-feed will display here" class="livefeed" readonly="true">{%for messages in msgs%} <p> {{messages['fromUsername']}} - {{messages['message']}} </p> {%endfor %}</div>
-
-            <h4>Type Message Below:</h4>
-            <input type="text" placeholder="Type message..." class="msg" name="Msg" required />
-
-            <button type="submit" class="btn">Send</button>
+    <div class="active-conversations" id="myForm">
+        
+        <div class="form-container">
+            <h2>Private Chats</h2>
+            <div contenteditable="false" placeholder="The live-feed will display here" class="convo" readonly="true">
+                {%for convo in conversations%}
+                <form action="/privateSearchUser/{{convo}}" method='GET'>
+                  <!-- <a href="/privateSearchUser/{{convo}}/current_user.id"> -->
+                    <button class='backbtn'> {{convo}}</button>
+                  <!-- </a> -->
+                </form>    
+                {%endfor %}
+            </div>
+          </div>
+        <form action="/privateconvo" method="POST" class="form-container">
+            {% with messages = get_flashed_messages() %}
+              {% if messages %}
+                  <div class="user-error">
+                  {{ messages[0] }}
+                  </div>
+              {% endif %}
+            {% endwith %}
+            <h4>Enter a username to start a new conversation:</h4>
+            <input type="text" placeholder="Enter Username" class="msg" name="NewConvo" required />
+            <button type="submit" class="backbtn">Send</button>
         </form>
+
     </div>
 
-    <a href="livechat"><button type="connect" class="backbtn">Connect to Feed</button></a>
-    <a href="home"><button type="submit" class="backbtn">Return to Home Page</button></a>
-
+    <!-- <a href="livechat"><button type="connect" class="backbtn">Connect to Feed</button></a> -->
+    {% if current_user.is_authenticated %}
+        <a href="{{url_for('homeProfile')}}"><button type="submit" class="backbtn">Return to Home Page</button></a>
+    {% endif %}
+    {% if not current_user.is_authenticated %}
+        <a href="{{url_for('home')}}"><button type="submit" class="backbtn">Return to Home Page</button></a>
+    {% endif %}
   </body>
-</html>

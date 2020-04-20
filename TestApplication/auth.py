@@ -74,6 +74,21 @@ def createuser():
             task['password'] = generate_password_hash(
                 passwordInput, method='sha256')
             datastore_client.put(task)
+
+            kind = 'Conversations'
+            name = usernameInput
+            task_key = datastore_client.key(kind, name)
+            task = datastore.Entity(key=task_key)
+            task['activeConvos'] = []
+            datastore_client.put(task)
+
+            # kind='PrivateMessage'
+            # task_key = datastore_client.key(kind, name)
+            # task = datastore.Entity(key=task_key)
+            # task['activeConvos'] = []
+            # datastore_client.put(task)
+
+
             return redirect(url_for('auth.login'))
     return render_template("/createuser/createuser.html", code=302)
 

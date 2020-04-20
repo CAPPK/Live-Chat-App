@@ -1,9 +1,10 @@
 
 from auth import auth as auth_blueprint
-from flask import Blueprint, Flask, redirect, request, render_template, url_for
+from flask import Blueprint, Flask, redirect, request, render_template, url_for,flash
 from google.cloud import datastore
 from datetime import datetime
 from flask_login import login_required, current_user, LoginManager
+from itertools import chain
 
 datastore_client = datastore.Client()
 main = Blueprint('main', __name__)
@@ -83,44 +84,81 @@ def livechat():
     # return render_template('livechat/livechat.html')
 
 
-@app.route('/privateSearchUser', methods=['GET', 'POST'])
+@app.route('/privateconvo', methods=['GET', 'POST'])  # in progress
 @login_required
-def privateSearchUser():
-    toID = ''
-    fromID = ''
-    toMessage = ''
+def privateconvo():
+    if request.method == 'POST':  # user input a new conversation
+        from models import checkIfUser
+        toID = request.form['NewConvo']
+        if checkIfUser(toID):  # if user was valid, update both current and end user conversations
+            kind = 'Conversations'
+            name = current_user.id
+            task_key = datastore_client.key(kind, name)
+            task = datastore_client.get(task_key)
+            if toID not in task['activeConvos'] and toID != current_user.id:
+                task['activeConvos'].append(toID)
+                # updates the current users active convos
+                datastore_client.put(task)
+                name = toID
+                task_key = datastore_client.key(kind, name)
+                task = datastore_client.get(task_key)
+                task['activeConvos'].append(current_user.id)
+                datastore_client.put(task)
 
+                kind="PrivateMessage"#setting up the array to hold the conversation
+                name=current_user.id+toID
+                task_key=datastore_client.key(kind,name)
+                task=datastore.Entity(key=task_key)
+                task['activeConvos'] = []
+                datastore_client.put(task)
+
+                kind="PrivateMessage"#setting up the array to hold the conversation
+                name=toID+current_user.id
+                task_key=datastore_client.key(kind,name)
+                task=datastore.Entity(key=task_key)
+                task['activeConvos'] = []
+                datastore_client.put(task)
+            else:
+                print('user already has an active convo with them')
+        else:
+            print('This user does not exist')
+            flash('This user does not exist')
+    task_key = datastore_client.key('Conversations', current_user.id)
+    task = datastore_client.get(task_key)
+    conversations=task['activeConvos']
+    return render_template('privateconvo/privateconvo.html', conversations=conversations, ActiveUser=current_user.id)
+
+@app.route('/privateSearchUser', defaults={'usersID': 'temporary'})
+@app.route('/privateSearchUser/<usersID>', methods=['GET', 'POST'])
+@login_required
+def privateSearchUser(usersID):
+    toMessage = ''
+    # print(usersID+"'s messages")
     if request.method == 'POST':
-        fromID = current_user.id
-        toID = request.form['toID']
         toMessage = request.form['Msg']
     if toMessage:
-        kind = 'PrivateMessage'
-        # name = 'Message'
-        now = datetime.now()
-        date_time = now.strftime("%m/%d/%Y, %H:%M:%S")
-        name = 'Message '+date_time
-        # # The Cloud Datastore key for the new entity
-        task_key = datastore_client.key(kind, name)
-        # # Prepares the new entity
-        task = datastore.Entity(key=task_key)
-        task['message'] = toMessage
-        task['time'] = now
-        task['toID'] = toID
-        task['fromID'] = fromID
-        # # Saves the entity
+        task_key = datastore_client.key('PrivateMessage', current_user.id+usersID)
+        task = datastore_client.get(task_key)
+        print(task['activeConvos'])
+        task['activeConvos'].append(current_user.id +": " + toMessage)
+        conversation=task['activeConvos']
+        print(conversation)
         datastore_client.put(task)
 
-        query = datastore_client.query(kind='PrivateMessage')
-        query.add_filter('toID', '=', current_user.id)
-        #query.order = ['-time']
-        msgs = query.fetch()
-        return render_template('privateSearchUser/privateSearchUser.html', msgs=msgs, ActiveUser=current_user.id)
-    query = datastore_client.query(kind='PrivateMessage')
-    query.add_filter('toID', '=', current_user.id)
-    # query.order = ['-time']
-    msgs = query.fetch()
-    return render_template('privateSearchUser/privateSearchUser.html', msgs=msgs, ActiveUser=current_user.id)
+        task_key = datastore_client.key('PrivateMessage', usersID+current_user.id)
+        task = datastore_client.get(task_key)
+        task['activeConvos'].append(current_user.id +": " + toMessage)
+        conversation=task['activeConvos']
+        datastore_client.put(task)
+        
+        return render_template('privateSearchUser/privateSearchUser.html', msgs=conversation, ActiveUser=current_user.id,userID=usersID)
+    
+    task_key = datastore_client.key('PrivateMessage', current_user.id+usersID)
+    task = datastore_client.get(task_key)
+    # print(task['activeConvos'])
+    conversations=task['activeConvos']
+    return render_template('privateSearchUser/privateSearchUser.html', msgs=conversations, ActiveUser=current_user.id,userID=usersID )
+
 
 
 if __name__ == '__main__':

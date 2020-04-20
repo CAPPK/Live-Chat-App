@@ -1,12 +1,10 @@
-<!-- {% extends "base/base.html" %}
-{% block head %} -->
+
 <html>
     <head>
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='home/style.css') }}">
         <title>New Age Media</title>
     </head>
-<!-- {% endblock %}
-{% block body %} -->
+
     <body>
         <header>
         <h1>{{ActiveUser}}'s New Age Media</h1>
@@ -14,20 +12,21 @@
 
         <br><br>
         <div class="form-style-6" id="myForm">
-            <form action="/privateSearchUser" method="POST">
+            <form action="/privateSearchUser/{{userID}}" method="POST">
                 <h1>Private Messages</h1>
-                <div contenteditable="false" placeholder="The live-feed will display here" class="livefeed" readonly="true">{%for PrivateMessage in msgs%} <p> {{PrivateMessage['fromID']}} - {{PrivateMessage['time']}} - {{PrivateMessage['message']}} </p> {%endfor %}</div>
-                
-                <!-- <h4>Type New Message Below:</h4> -->
-                <!-- <textarea placeholder="Type message..." class="msg" name= "MSG" required></textarea> -->
-                <input type="text" placeholder="To User Name..." class="msg" name="toID" required />
+                <div contenteditable="false" placeholder="The live-feed will display here" class="livefeed" readonly="true">
+                    {%for msg in msgs%} 
+                    <p> {{msg}} </p> 
+                    {%endfor %}
+                </div>
                 <input type="text" placeholder="Type message..." class="msg" name="Msg" required />
 
                 <button type="submit" class="btn">Send</button>
             </form>
         </div>
 
-        <a href="{{url_for('privateSearchUser')}}"><button type="connect" class="backbtn">Connect to Feed</button></a>
+        <a href="/privateSearchUser/{{userID}}"><button type="connect" class="backbtn">Connect to Feed</button></a>
+        <a href="{{url_for('privateconvo')}}"><button type="connect" class="backbtn">Go back to all DMs</button></a>
         {% if current_user.is_authenticated %}
         <a href="{{url_for('homeProfile')}}"><button type="submit" class="backbtn">Return to Home Page</button></a>
         {% endif %}
@@ -35,5 +34,4 @@
         <a href="{{url_for('home')}}"><button type="submit" class="backbtn">Return to Home Page</button></a>
         {% endif %}
     </body>
-<!-- {%endblock %} -->
 </html>
