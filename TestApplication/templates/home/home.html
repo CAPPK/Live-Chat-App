@@ -4,6 +4,15 @@
     <head>
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='home/style.css') }}">
         <title>New Age Media</title>
+        <script type="text/javascript">
+            function date(){
+                var date1 = new Date();
+                var day = date1.getDate();
+                var month = date1.getMonth();
+                var year = date1.getFullYear();
+                document.write((month+1) + "-" + day + "-" + year);
+            }
+        </script>
     </head>
 <!-- {% endblock %}
 {% block body %} -->
@@ -16,6 +25,7 @@
         <div class="form-style-7">
             <div class="left-div">
                 <h1> Welcome to New Age Media! </h1>
+                <h1> Date: <script type="text/javascript">date();</script></h1>
                 <h1> As a non registered user you can only access Live-Chat</h1>
                 <h1> Please login to chat privately with friends!</h1>
                 <h1> Finish date tbd... Enjoy Live-Chat! </h1>
