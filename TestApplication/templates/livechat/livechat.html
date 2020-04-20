@@ -16,12 +16,21 @@
     <div class="form-style-6" id="myForm">
         <form action="/livechat" method="POST">
             <h1>Live Chat</h1>
-            <div contenteditable="false" placeholder="The live-feed will display here" class="livefeed" readonly="true">{%for messages in msgs%} <p> {{messages['time']}} - {{messages['message']}} </p> {%endfor %}</div>
-            
-            <!-- <h4>Type Message Below:</h4> -->
-            <!-- <textarea placeholder="Type message..." class="msg" name= "MSG" required></textarea> -->
-            <input type="text" placeholder="Type message..." class="msg" name="Msg" required />
+            <div contenteditable="false" placeholder="The live-feed will display here" class="livefeed" readonly="true">
+              {%for messages in msgs%}
+                <p> 
+                  {{messages['time']}} - {{messages['message']}} 
+                </p> 
+              {%endfor %}
+            </div>
 
+
+            <input type="text" placeholder="Type message..." class="msg" name="Msg" required />
+            {% if current_user.is_authenticated %}
+              <label for="anon">anonymous?</label>
+              <input type="checkbox" class="anonymous" name="anon" value='1'>  
+                   
+            {% endif %}
             <button type="submit" class="btn">Send</button>
         </form>
     </div>
