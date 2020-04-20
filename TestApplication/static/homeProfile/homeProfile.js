@@ -11,20 +11,20 @@ function handleWeather(response) {
 	console.log(weather);
 
 	var mainInfo = document.getElementById('mainCont');
-	var cityCont = document.createElement('div');
+	var cityCont = document.getElementById('city');
 	var city = weather['name'];
 	cityCont.innerText = 'City: ' + city;
 
-	var tempCont = document.createElement('div');
+	var tempCont = document.getElementById('temp');
 	var temp = weather['main']['temp'];
 	tempCont.innerText = 'Temp: ' + temp;
 
-	var descCont = document.createElement('div');
+	var descCont = document.getElementById('desc');
 	var desc = weather['weather'][0]['description'];
 	console.log(weather['weather']);
 	descCont.innerText = 'Description: ' + desc;
 
-	var HumidityCont = document.createElement('div');
+	var HumidityCont = document.getElementById('hum');
 	var hum = weather['main']['humidity'];
 	HumidityCont.innerText = 'Humidity: ' + hum;
 
